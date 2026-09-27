@@ -1,7 +1,7 @@
 import React from 'react';
 import { Search, ShoppingBag } from 'lucide-react';
 
-export default function Header({ onOpenMenu, onOpenCart, cartCount }) {
+export default function Header({ onOpenMenu, onOpenCart, cartCount, onNavigate = () => {} }) {
   return (
     <header className="fixed top-0 left-0 w-full z-[1000] px-4 md:px-8 py-6 pointer-events-none">
       <nav className="w-full flex items-center justify-between gap-4">
@@ -13,12 +13,12 @@ export default function Header({ onOpenMenu, onOpenCart, cartCount }) {
 
         {/* Center: Links (Hidden on small screens) */}
         <div className="pointer-events-auto hidden lg:flex items-center gap-6 bg-white/20 backdrop-blur-md text-[#F5F5F0] px-8 py-3 rounded-full border border-white/10 text-xs font-bold tracking-widest uppercase">
-          <a href="#drops" className="hover:text-white transition-colors">New In</a>
-          <a href="#drops" className="hover:text-white transition-colors">Tops</a>
-          <a href="#drops" className="hover:text-white transition-colors">Bottoms</a>
-          <a href="#drops" className="hover:text-white transition-colors">Outerwear</a>
-          <a href="#drops" className="hover:text-white transition-colors">Accessories</a>
-          <a href="#drops" className="hover:text-white transition-colors">Lookbook</a>
+          <button onClick={() => onNavigate('ALL')} className="hover:text-white transition-colors cursor-pointer">New In</button>
+          <button onClick={() => onNavigate('T-Shirts')} className="hover:text-white transition-colors cursor-pointer">Tops</button>
+          <button onClick={() => onNavigate('Denim')} className="hover:text-white transition-colors cursor-pointer">Bottoms</button>
+          <button onClick={() => onNavigate('Jackets')} className="hover:text-white transition-colors cursor-pointer">Outerwear</button>
+          <button onClick={() => onNavigate('Hoodies')} className="hover:text-white transition-colors cursor-pointer">Hoodies</button>
+          <button onClick={() => onNavigate('ALL')} className="hover:text-white transition-colors cursor-pointer">Lookbook</button>
         </div>
 
         {/* Right: Actions */}

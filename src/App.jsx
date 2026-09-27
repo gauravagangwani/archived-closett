@@ -130,6 +130,10 @@ export default function App() {
         onOpenMenu={() => setIsMenuOpen(true)}
         onOpenCart={() => setIsCartOpen(true)}
         cartCount={totalCartCount}
+        onNavigate={(cat) => {
+          setSelectedCategory(cat);
+          scrollToDrops();
+        }}
       />
 
       {/* Full-Screen Navigation Menu Drawer */}
