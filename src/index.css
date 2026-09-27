@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+:root {
+  --bg-dark: #0B0B0B;
+  --bg-card: #141414;
+  --bg-subtle: #1C1C1C;
+  --bg-border: #2A2A2A;
+
+  --text-main: #F5F5F0;
+  --text-secondary: #8A8A8A;
+  --text-muted: #555555;
+
+  --accent-blue: #164BFF;
+  --accent-orange: #D95B24;
+  --accent-espresso: #4A3025;
+  --accent-green: #31583F;
+  --accent-red: #A52A2A;
+
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+  --font-mono: 'Space Grotesk', monospace;
+
+  --wave-height: 5rem;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --wave-height: 8rem;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--bg-dark);
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-blue);
+}
+
+/* Typography Utility Classes */
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Custom Floating Keyframe Animations */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1.5deg); }
+}
+@keyframes floatReverse {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(8px) rotate(-1.5deg); }
+}
+@keyframes marqueeScroll {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-float {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+.animate-float-reverse {
+  animation: floatReverse 7s ease-in-out infinite;
+}
+.animate-marquee {
+  display: flex;
+  width: 200%;
+  animation: marqueeScroll 25s linear infinite;
+}
+
+/* Minimalist Aesthetic Button */
+.huge-button {
+  display: inline-block;
+  position: relative;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-main);
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+.huge-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent-blue);
+  border-radius: 999px;
+  transform: translate(4px, 4px);
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.2s ease;
+}
+.huge-button.color-orange::before {
+  background: var(--accent-orange);
+}
+.huge-button.color-espresso::before {
+  background: var(--accent-espresso);
+}
+.huge-button.color-green::before {
+  background: var(--accent-green);
+}
+.huge-button.color-red::before {
+  background: var(--accent-red);
+}
+.huge-button .inner {
+  position: relative;
+  display: inline-block;
+  background: var(--bg-card);
+  color: var(--text-main);
+  border-radius: 999px;
+  padding: 0.85rem 2.2rem;
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  border: 1px solid var(--bg-border);
+}
+.huge-button:hover .inner {
+  transform: translate(-2px, -2px);
+  border-color: var(--text-secondary);
+}
+.huge-button:active::before {
+  transform: translate(0, 0);
+}
+.huge-button:active .inner {
+  transform: translate(2px, 2px);
+}
+
+/* Card Styling - Sleek Minimal Dark */
+.archived-card {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-border);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.3s ease, box-shadow 0.4s ease;
+  position: relative;
+}
+.archived-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent-blue);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+/* Badge Stitched Pill */
+.badge-stitched {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* 3D Topographic Layer Canvas Background - Dark Minimal Aesthetic */
+.topo-layer {
+  position: absolute;
+  border-radius: 50%;
+  filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.5));
+}
